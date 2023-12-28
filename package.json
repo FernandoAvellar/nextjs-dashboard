@@ -2,9 +2,12 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "npm run services:up && next dev",
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
+    "services:down": "docker compose -f infra/compose.yaml down",
+    "services:stop": "docker compose -f infra/compose.yaml stop",
+    "services:up": "docker compose -f infra/compose.yaml up -d",
     "start": "next start"
   },
   "dependencies": {

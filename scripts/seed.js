@@ -1,4 +1,5 @@
 const { db } = require('@vercel/postgres');
+
 const {
   invoices,
   customers,
@@ -160,6 +161,7 @@ async function seedRevenue(client) {
   }
 }
 
+//Main function to seed Vercel postgree database
 async function main() {
   const client = await db.connect();
 
@@ -170,6 +172,13 @@ async function main() {
 
   await client.end();
 }
+
+main().catch((err) => {
+  console.error(
+    'An error occurred while attempting to seed the database:',
+    err,
+  );
+});
 
 main().catch((err) => {
   console.error(
